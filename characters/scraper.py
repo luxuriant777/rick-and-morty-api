@@ -20,13 +20,14 @@ def scrape_characters() -> list[Character]:
                     status=character_dict["status"],
                     species=character_dict["species"],
                     gender=character_dict["gender"],
-                    image=character_dict["image"]
+                    image=character_dict["image"],
                 )
             )
 
         next_url_to_scrape = characters_response["info"]["next"]
 
     return characters
+
 
 def save_characters(characters: list[Character]) -> None:
     Character.objects.bulk_create(characters)
